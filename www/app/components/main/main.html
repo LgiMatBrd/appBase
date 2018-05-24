@@ -10,40 +10,57 @@
 
 <md-sidenav class="md-sidenav-left" md-component-id="left">
   <md-toolbar>
-    <h1 class="md-toolbar-tools">SideNav Menu</h1>
+    <h1 class="md-toolbar-tools">Menu</h1>
   </md-toolbar>
   <md-list ng-cloak>
-    <md-list-item ng-href="http://www.google.com/design/spec/material-design/introduction.html">
-      <md-icon style="padding-right: 16px; color: #000000">school</md-icon>
-      <p>Material Design</p>
+    <md-list-item ng-href="#">
+      <md-icon style="padding-right: 16px; color: #000000">menu</md-icon>
+      <p>Inicio</p>
     </md-list-item>
-    <md-list-item ng-href="https://material.angularjs.org/latest/">
+    <md-list-item ng-href="#">
       <md-icon style="padding-right: 16px; color: #000000">settings_ethernet</md-icon>
-      <p>Angular Material</p>
+      <p>Compratilhar <small style="color: #999;font-size: 10px;">em breve</small></p>
     </md-list-item>
   </md-list>
 </md-sidenav>
 
 <div layout="column" layout-align="center center" flex>
-  <md-whiteframe class="md-whiteframe-3dp" layout="column" style="margin: 1em; width: 22em; height: 15em;" flex>
+  <md-whiteframe class="md-whiteframe-3dp" layout="column" style="margin: 1em; width: 98%;" flex>
     <div layout="column" flex style="margin-left: 1em;">
-      <h4>Project:</h4>
-      <p style="margin-top: -1em;">Cordova-Angular-AngularMaterial-Seed</p>
-      <h4>Created by:</h4>
-      <p style="margin-top: -1em;">MarioAleo</p>
-    </div>
-    <md-divider></md-divider>
-    <div layout="row" layout-align="space-around center" flex="20">
-      <md-button class="md-icon-button" aria-label="Project" ng-href="https://github.com/mario-aleo/cordova-angular-angularMaterial-seed">
-        <md-icon style="color: #000000">book</md-icon>
-      </md-button>
-      <md-button class="md-icon-button" aria-label="Creator" ng-href="https://github.com/mario-aleo">
-        <md-icon style="color: #000000">favorite</md-icon>
-      </md-button>
+        <h4>Preencha os campos necessários:</h4>
+        <small>Se não preenhcer o token os dados padrões serão usados.</small>
+        <small style="color: #999;font-size: 10px;">EX: APP_USR-4941010159154357-052416-09a92f7ff3a3a554b6aa32623ce682b0-323924729</small>
+        <md-content layout-padding>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Chave Token</label>
+            <input ng-model="mercadolivre.token">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Item a pesquisar</label>
+            <input ng-model="mercadolivre.itemBusca">
+          </md-input-container>
+        </div>        
+      <section style="float: left !important;margin-top: -3% !important;" layout="row" layout-sm="row" layout-align="center center" layout-wrap>
+        <md-button class="md-raised md-primary" ng-click="BuscarItem($event, mercadolivre)">Buscar</md-button>
+      </section>    
+            
+    <md-list ng-show="mostraResultado" class="md-dense" flex style="margin-top: 6%;">
+        <md-subheader class="md-no-sticky">Resultados para: "<strong>{{ resultado.query }}</strong>" encontrados {{ resultado.paging.total }} resultados.</md-subheader>
+        <md-list-item class="md-3-line" ng-repeat="item in data">
+        <a href="{{ item.permalink }}">
+          <img ng-src="{{ item.thumbnail }}" class="" style="margin: 10px;" alt="{{item.title}}" />
+        </a>
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ item.title }}</h3>
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.id }}</p>
+          </div>
+        </md-list-item>            
+    </md-list>
+            
+        </md-content>
     </div>
   </md-whiteframe>
-
-  <md-button class="md-fab md-primary" aria-label="Menu">
-    <md-icon>menu</md-icon>
-  </md-button>
 </div>

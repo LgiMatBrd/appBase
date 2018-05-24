@@ -7,7 +7,7 @@ angular.module("ngapp").config(["$stateProvider", "$urlRouterProvider", function
     $stateProvider.state("main", {
         url: "/main",
         templateUrl: "app/components/main/main.html",
-        title: "Cordova Angular-Material",
+        title: "Integração com Mercado Livre",
         controller: "MainController",
         controllerAs: "main"
     });
